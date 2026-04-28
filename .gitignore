@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# FastAPI / cache
+*.sqlite3
+
+# Migrations (ako kasnije dodaš Alembic)
+alembic/versions/__pycache__/
+
+# Node (ako već imaš frontend u istom repo-u)
+node_modules/
+dist/
+build/
+
+# Supabase / local exports
+supabase/.temp/
