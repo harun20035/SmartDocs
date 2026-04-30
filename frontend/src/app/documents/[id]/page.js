@@ -14,6 +14,8 @@ export default function DocumentDetailPage({ params }) {
   const [saving, setSaving] = useState(false);
   const [form, setForm] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
+  const [showValidationModal, setShowValidationModal] = useState(false);
+  const [validationModalMessage, setValidationModalMessage] = useState("");
 
   useEffect(() => {
     fetchDocument();
@@ -155,7 +157,12 @@ export default function DocumentDetailPage({ params }) {
       await fetchDocument();
     } catch (err) {
       console.error(err);
-      setError(err.message || "Failed to update document");
+      if (err.message?.toLowerCase().includes("validation errors")) {
+        setValidationModalMessage(err.message);
+        setShowValidationModal(true);
+        } else {
+        setError(err.message || "Failed to update document");
+        }
     } finally {
       setSaving(false);
     }
@@ -382,6 +389,26 @@ export default function DocumentDetailPage({ params }) {
           Reject
         </button>
       </div>
+      {showValidationModal && (
+        <div className={styles.modalOverlay}>
+            <div className={styles.modal}>
+            <h2 className={styles.modalTitle}>Cannot confirm document</h2>
+
+            <p className={styles.modalText}>
+                {validationModalMessage}
+            </p>
+
+            <div className={styles.modalActions}>
+                <button
+                className={styles.button}
+                onClick={() => setShowValidationModal(false)}
+                >
+                OK
+                </button>
+            </div>
+            </div>
+        </div>
+        )}
     </div>
   );
 }
