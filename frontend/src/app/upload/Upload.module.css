@@ -1,0 +1,80 @@
+.container {
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  width: 520px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.fileName {
+  margin-top: 10px;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  background: #1d4ed8;
+}
+
+.button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 12px;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.backLink {
+  margin-top: 16px;
+  display: inline-block;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}

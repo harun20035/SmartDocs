@@ -37,3 +37,6 @@ build/
 
 # Supabase / local exports
 supabase/.temp/
+
+uploads/*
+!uploads/.gitkeep

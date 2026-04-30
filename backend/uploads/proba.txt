@@ -1,0 +1,13 @@
+Document Type: invoice
+Supplier: ACME Supplies d.o.o.
+Document Number: INV-2026-0042
+Issue Date: 2026-04-25
+Due Date: 2026-05-10
+Currency: EUR
+Subtotal: 500.00
+Tax: 85.00
+Total: 610.00
+
+Laptop Stand,2,45,90
+USB-C Cable,3,10,30
+Monitor 24",2,120,250
