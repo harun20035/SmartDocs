@@ -23,6 +23,10 @@ app.include_router(dashboard_router)
 def health():
     return {"status": "SmartDocs running"}
 
+@app.get("/")
+def root():
+    return {"message": "API is running"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
