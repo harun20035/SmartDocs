@@ -39,11 +39,7 @@ def process_uploaded_file(session, file):
         file_path=file_path
     )
 
-    return {
-        "id": document.id,
-        "file_name": document.file_name,
-        "status": document.status
-    }
+    return process_document(session, document.id)
 
 def process_document(session, document_id: int):
     document = get_by_id(session, document_id)

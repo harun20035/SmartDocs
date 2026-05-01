@@ -42,16 +42,12 @@ export default function UploadPage() {
       }
 
       const data = await res.json();
-      const documentId = data.id;
 
-      const processRes = await fetch(
-        `${API_URL}/documents/${documentId}/process`,
-        { method: "POST" }
-      );
+      // FIX: backend vraća "document_id", ne "id"
+      const documentId = data.document_id || data.id;
 
-      if (!processRes.ok) {
-        const errData = await processRes.json().catch(() => ({}));
-        throw new Error(errData.detail || "Processing failed");
+      if (!documentId) {
+        throw new Error("Server did not return a document ID");
       }
 
       router.push(`/documents/${documentId}`);
