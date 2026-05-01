@@ -5,10 +5,6 @@ from datetime import date
 from pathlib import Path
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
 def to_int(value, default=0):
     try:
         return int(str(value).strip())
@@ -33,9 +29,9 @@ def parse_date(value):
     raw = str(value).strip()
     parts = re.split(r"[-./]", raw)
     try:
-        if len(parts) == 3 and len(parts[0]) == 4:    # YYYY-MM-DD
+        if len(parts) == 3 and len(parts[0]) == 4:
             return date(int(parts[0]), int(parts[1]), int(parts[2]))
-        if len(parts) == 3 and len(parts[2]) == 4:    # DD.MM.YYYY ili DD/MM/YYYY
+        if len(parts) == 3 and len(parts[2]) == 4:
             return date(int(parts[2]), int(parts[1]), int(parts[0]))
     except (ValueError, TypeError):
         return None
@@ -86,10 +82,6 @@ def extract_currency(content: str):
     return "EUR"
 
 
-# ---------------------------------------------------------------------------
-# CSV
-# ---------------------------------------------------------------------------
-
 def extract_csv(file_obj):
     content = file_obj.read().decode("utf-8")
     reader = csv.DictReader(io.StringIO(content))
@@ -117,10 +109,6 @@ def extract_csv(file_obj):
         "total": subtotal,
     }
 
-
-# ---------------------------------------------------------------------------
-# TXT
-# ---------------------------------------------------------------------------
 
 def extract_txt(file_obj, filename: str):
     content = file_obj.read().decode("utf-8", errors="ignore")
@@ -183,10 +171,6 @@ def extract_text_content(content: str, filename: str):
         "total":           total,
     }
 
-
-# ---------------------------------------------------------------------------
-# PDF  —  pdfplumber umjesto pypdf
-# ---------------------------------------------------------------------------
 
 SUMMARY_LABELS = {
     "subtotal", "sub total", "tax", "vat", "gst",
@@ -300,10 +284,6 @@ def extract_pdf(file_obj, filename: str):
 
     return result
 
-
-# ---------------------------------------------------------------------------
-# Glavni entry point
-# ---------------------------------------------------------------------------
 
 def extract(file_obj, filename: str):
     filename = filename.lower()

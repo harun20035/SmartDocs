@@ -43,7 +43,6 @@ export default function UploadPage() {
 
       const data = await res.json();
 
-      // FIX: backend vraća "document_id", ne "id"
       const documentId = data.document_id || data.id;
 
       if (!documentId) {
