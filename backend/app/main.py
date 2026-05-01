@@ -6,6 +6,14 @@ from app.controllers.document_controller import router as documents_router
 from app.controllers.dashboard_controller import router as dashboard_router
 from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "https://smart-docs-ashen.vercel.app"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 def create_db_and_tables():
     Base.metadata.create_all(bind=engine)
 
@@ -26,11 +34,3 @@ def health():
 @app.get("/")
 def root():
     return {"message": "API is running"}
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://smart-docs-ashen.vercel.app"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
