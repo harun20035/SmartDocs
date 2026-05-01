@@ -10,6 +10,8 @@ export default function UploadPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const router = useRouter();
 
   function handleFileChange(e) {
@@ -29,7 +31,7 @@ export default function UploadPage() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8000/documents/upload", {
+      const res = await fetch("${API_URL}/documents/upload", {
         method: "POST",
         body: formData,
       });
@@ -43,7 +45,7 @@ export default function UploadPage() {
       const documentId = data.id;
 
       const processRes = await fetch(
-        `http://localhost:8000/documents/${documentId}/process`,
+        `${API_URL}/documents/${documentId}/process`,
         { method: "POST" }
       );
 

@@ -14,6 +14,8 @@ export default function DashboardPage() {
   const [offset, setOffset] = useState(0);
   const LIMIT = 10;
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
     fetchDocuments(true);
   }, []);
@@ -28,7 +30,7 @@ export default function DashboardPage() {
 
       const currentOffset = reset ? 0 : offset;
       const res = await fetch(
-        `http://localhost:8000/dashboard?offset=${currentOffset}&limit=${LIMIT}`
+        `${API_URL}/dashboard?offset=${currentOffset}&limit=${LIMIT}`
       );
       const data = await res.json();
 

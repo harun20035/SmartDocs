@@ -17,6 +17,8 @@ export default function DocumentDetailPage({ params }) {
   const [showValidationModal, setShowValidationModal] = useState(false);
   const [validationModalMessage, setValidationModalMessage] = useState("");
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
     fetchDocument();
   }, [id]);
@@ -25,7 +27,7 @@ export default function DocumentDetailPage({ params }) {
     try {
       setLoading(true);
 
-      const res = await fetch(`http://localhost:8000/documents/${id}`);
+      const res = await fetch(`${API_URL}/documents/${id}`);
 
       if (!res.ok) {
         throw new Error(`Failed to fetch document (${res.status})`);
@@ -141,7 +143,7 @@ export default function DocumentDetailPage({ params }) {
         payload.status = status;
       }
 
-      const res = await fetch(`http://localhost:8000/documents/${id}`, {
+      const res = await fetch(`${API_URL}/documents/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
