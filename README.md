@@ -221,3 +221,6 @@ Improve the user experience for high-volume uploads:
 - Move heavy OCR and extraction tasks to background workers.
 - Implement WebSockets to provide real-time progress updates on the dashboard while documents are being processed.
 
+## 📘 Documentation
+
+Interactive API documentation is available at https://smartdocs-yy9e.onrender.com/docs#/
