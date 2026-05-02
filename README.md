@@ -57,7 +57,7 @@ You can use the provided `.env.example` as a template.
 ### 1. Create a .env file
 
 Create a .env file in the backend directory and add your database connection string:
-DATABASE_URL=postgresql://username:password@localhost:5432/document_processing
+DATABASE_URL=postgresql://username:password@localhost:5432/your_db_name
 
 ---
 
