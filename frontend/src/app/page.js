@@ -14,6 +14,7 @@ export default function DashboardPage() {
   const [offset, setOffset] = useState(0);
   const LIMIT = 10;
 
+  // const API_URL=http://localhost:8000
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {

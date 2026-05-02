@@ -10,6 +10,7 @@ export default function UploadPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // const API_URL=http://localhost:8000
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const router = useRouter();
