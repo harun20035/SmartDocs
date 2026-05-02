@@ -1,6 +1,6 @@
 # 📄 SmartDocs - Document Processing System
 
-A full-stack application that extracts, validates, and stores structured data from uploaded documents using AI-based extraction.
+A full-stack application that extracts, validates, and stores structured data from uploaded documents.
 
 ---
 
@@ -22,6 +22,8 @@ https://smart-docs-five.vercel.app/
 
 This project can be run locally with a FastAPI backend and a Next.js frontend.
 U need to have Node.js and Python installed.
+
+First of all, clone the project using: git clone https://github.com/harun20035/SmartDocs
 
 ---
 
@@ -126,7 +128,7 @@ For this one you have 2 options:
 ### 4. Start frontend server
 
 Development:
-npm run dev
+- npm run dev
 
 Production:
 - npm run build
