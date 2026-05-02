@@ -114,11 +114,11 @@ For this one you have 2 options:
 
 - Go to every page.js file in frontend
 - Find this piece of code: 
-        // const API_URL=http://localhost:8000
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        - // const API_URL=http://localhost:8000
+        - const API_URL = process.env.NEXT_PUBLIC_API_URL;
 - Change it to this:
-        const API_URL=http://localhost:8000
-        // const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        - const API_URL=http://localhost:8000
+        - // const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 2.
 
@@ -133,3 +133,91 @@ Development:
 Production:
 - npm run build
 - npm run start
+
+## 🧠 Explanation of Approach
+
+The system is designed as a document processing pipeline that automatically extracts, validates, and stores structured data from uploaded files.
+
+---
+
+### 🔄 1. Document Upload
+
+The user uploads a document through the frontend.  
+The file is sent to the backend API for processing.
+
+---
+
+### 📄 2. Data Extraction
+
+The backend reads the uploaded file and uses an extraction service to convert unstructured document content into structured data (`extracted_data`).
+
+This includes:
+- Header information (supplier, dates, totals, etc.)
+- Line items (product details, quantities, prices)
+
+---
+
+### 🧩 3. Data Mapping
+
+Extracted data is mapped into database models:
+- Header fields are stored in the `Document` model (table)
+- Line items are stored in the `LineItem` model
+
+---
+
+### ✅ 4. Validation
+
+The system validates extracted data using business rules:
+- Required fields check
+- Date validation
+- Mathematical consistency (subtotal, total, line items)
+- Duplicate document detection
+
+If validation fails, errors are stored and the document is marked for review.
+
+---
+
+### 💾 5. Persistence
+
+After validation:
+- Valid documents are marked as `validated`
+- Invalid documents are marked as `needs_review`
+- All data is stored in PostgreSQL database
+
+---
+
+### 📊 6. Response
+
+The backend returns:
+- Extracted data
+- Validation results
+- Document status
+
+This is displayed in the frontend for user review.
+
+## 🤖 AI Tools Used
+
+- ChatGPT - Used during the development of the backend and overall system to accelerate development
+- Cursor - Used mainly for frontend productivity and css files
+
+## 🔧 Improvements I Would Make
+
+Although the core requirements are completed, several improvements would make the system more robust and user-friendly:
+
+### 1. Document Preview
+Add a preview of the uploaded document (PDF/Image) so users can visually compare the extracted data with the source.
+
+### 2. Search & Filter on Dashboard
+Enhance the dashboard with:
+- Search by supplier, document number, or status  
+- Filters (validated, needs_review, uploaded)   
+
+### 3. Performance Optimizations
+For large documents or batches: 
+- Cache previous validation results  
+
+### 4. Asynchronous Batch Processing
+Improve the user experience for high-volume uploads:
+- Move heavy OCR and extraction tasks to background workers.
+- Implement WebSockets to provide real-time progress updates on the dashboard while documents are being processed.
+
