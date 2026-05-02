@@ -125,9 +125,9 @@ For this one you have 2 options:
 
 ### 4. Start frontend server
 
+Development:
 npm run dev
-or
+
+Production:
 npm run build
 npm run start
-
-For development you can use first option and for production you can use second one
