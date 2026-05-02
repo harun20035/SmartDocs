@@ -14,7 +14,7 @@ https://smart-docs-five.vercel.app/
 
 - Backend: FastAPI (Python)
 - Frontend: Next.js (React)
-- Database: PostgreSQL / SQLite
+- Database: PostgreSQL
 
 ---
 
